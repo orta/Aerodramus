@@ -14,7 +14,7 @@
 
 @implementation Aerodramus
 
-- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+- (nullable instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
 {
     self = [super init];
     if (!self) return nil;
@@ -97,7 +97,7 @@
     }];
 }
 
-- (void)update:(void (^)(BOOL updated, NSError *error))completed;
+- (void)update:(nonnull void (^)(BOOL updated, NSError * __nullable error))completed
 {
     NSURLRequest *request = [self.router headLastUpdateRequestForAccountID:self.accountID];
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

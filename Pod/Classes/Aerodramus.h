@@ -18,16 +18,16 @@
 /// It will look in the user's document dir for [filename].json
 /// and then fall back to looking inside the App bundle.
 
-- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+- (nullable instancetype)initWithServerURL:(nonnull NSURL *)url accountID:(NSInteger)accountID APIKey:(nonnull NSString *)APIKey localFilename:(nonnull NSString *)filename;
 
 /// Does a HEAD request against the server comparing the local date with the last changed
-- (void)checkForUpdates:(void (^)(BOOL updatedDataOnServer))updateCheckCompleted;
+- (void)checkForUpdates:(nonnull void (^)(BOOL updatedDataOnServer))updateCheckCompleted;
 
 /// Updates the local instance with data from the server
-- (void)update:(void (^)(BOOL updated, NSError *error))completed;
+- (void)update:(nonnull void (^)(BOOL updated,  NSError *__nullable error))completed;
 
 /// Saves the current object to disk
-- (BOOL)saveToDisk:(void (^)(BOOL saved))saveCompleted;
+- (BOOL)saveToDisk:(nonnull void (^)(BOOL saved))saveCompleted;
 
 /// The Echo account name for this app
 @property (nonatomic, nonnull, copy) NSString *name;
